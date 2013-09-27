@@ -11,6 +11,11 @@ tmp/
 *.bak
 *.swp
 *~.nib
+*.pdf
+*.aux
+*.log
+*.gz
+*.toc
 local.properties
 .classpath
 .settings/

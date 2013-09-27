@@ -1,0 +1,43 @@
+\documentclass[12pt]{report}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newtheorem{exer}{Problem}[chapter] 
+
+\newenvironment{solution}
+               {\let\oldqedsymbol=\qedsymbol
+                \renewcommand{\qedsymbol}{$\blacktriangleleft$}
+                \begin{proof}[\bfseries\upshape Solution]}
+               {\end{proof}
+                \renewcommand{\qedsymbol}{\oldqedsymbol}}
+ 
+\begin{document}
+ 
+\title{\textbf{Notes and Solutions} \\ \large \textit{Differential Geometry}}
+\author{Regoon Wang, ChemE@UNSW \\ wang.regoon@gmail.com} 
+ 
+\maketitle
+
+\tableofcontents
+
+\include{chap1} 
+\include{chap2}
+\include{chap3} 
+\include{chap4} 
+\include{chap5} 
+\include{chap6} 
+\include{chap7} 
+\include{chap8}
+\include{chap9} 
+\include{chap10} 
+\include{chap11} 
+\include{chap12}
+\include{chap13} 
+\include{chap14}
+\include{chap15}
+ 
+\end{document}
