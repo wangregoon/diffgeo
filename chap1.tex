@@ -3,7 +3,6 @@ A smooth manifold can be seen as a set with two layers of structure: first a top
 ten a smooth structure.
 
 \section{Topological Manifolds}
-
 \begin{definition}[\emph{Topological Manifold}] 
 Suppose $M$ is a topological space, M is a \emph{topological n-manifold} if
 \begin{enumerate}
@@ -15,7 +14,21 @@ the topologyof $M$.
 neighborhood that is homeomorphic to an open subset of $\R^n$. 
 \end{enumerate}
 \end{definition}
-
+Requreing that manifolds share these properties helps to ensure that manifolds behave
+in the ways we expect from our experience with Euclidean space. For example, it is easy
+to verify that in a Hausdorff space, onepoint sets are closed and limits of convergent
+sequences are unique. The motivation for second countability is a bit less evident, 
+but it will have important consequences throughout the book, beginning with the existence
+of partitions of unity.
+\begin{lem}
+Let M be a second countable topological space. Then every open cover of M has a countable
+subcover. Proof can be found in [Lee00, Lemma2.15].
+\end{lem}
+\begin{definition}[\emph{coordinate chart}]
+A coordinate chart on M is a pair $(U,\varphi)$, where $U$ is an open subset of M and 
+$\varphi:U\rightarrow \widetilde{U}\subset \R^n$. $U$ is a coordinate domain, $\varphi$
+is coordinate map.
+\end{definition}
 \section{Smooth Structure}
 \section{Examples}
 \section{Local Coordinate Representation}
