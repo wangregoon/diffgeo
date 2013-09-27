@@ -3,17 +3,7 @@
 \usepackage[margin=1in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb}
  
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-
-\newtheorem{exer}{Problem}[chapter] 
-
-\newenvironment{solution}
-               {\let\oldqedsymbol=\qedsymbol
-                \renewcommand{\qedsymbol}{$\blacktriangleleft$}
-                \begin{proof}[\bfseries\upshape Solution]}
-               {\end{proof}
-                \renewcommand{\qedsymbol}{\oldqedsymbol}}
+\include{preamble}
  
 \begin{document}
  
