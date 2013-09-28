@@ -24,12 +24,118 @@ of partitions of unity.
 Let M be a second countable topological space. Then every open cover of M has a countable
 subcover. Proof can be found in [Lee00, Lemma2.15].
 \end{lem}
+\begin{exer}
+Show that equivalent definitions of locally Euclidean spaces are obtained if, instead of
+requiring $U$ to be homeomorphic to an open subset of $\Re^n$, we require it to be homeomorphic
+to an open ball in $\Re^n$, or to $\Re^n$ itself.
+\end{exer}
+\begin{exer}
+Show that any topological subspace of a Hausdorff space is Hausdorff, and any finite product of
+Hausdorff space is Hausdorff.
+\end{exer}
+\begin{exer}
+Show that any topological subspace of a second countable space is second countable, and any finite
+product of second countable spaces is second countable.
+\end{exer}
 \begin{definition}[\emph{coordinate chart}]
 A coordinate chart on M is a pair $(U,\varphi)$, where $U$ is an open subset of M and 
 $\varphi:U\rightarrow \widetilde{U}\subset \R^n$. $U$ is a coordinate domain, $\varphi$
 is coordinate map.
 \end{definition}
+\begin{example}
+Let $\mathcal{S}^n$ denote the n-sphere, which the set of unit-length vector in $\R^{n+1}$
+$$ \mathcal{S}^n = \{x\in \R^{n+1}: |x|=1\}$$
+It is Hausdorff and second countable because it is a subspace of $\R^n$. To Show that it
+is locally Euclidean, let 
+$$ U_i^{\pm}=\{(x^1,\dots,x^{n+1})\in \mathcal{S}^n : x_{+}^i > 0, x_{-}^i < 0 \}$$
+Define maps $\varphi_i^{\pm}:U_i^{\pm}\rightarrow\R^n$ by
+$$ \varphi_i^{\pm}(x^1,\dots,x^{n+1})=(x^1,\dots,x^{i-1},\pm\sqrt{1-|x|^2},x^{i+1},\dots,x^{n+1})$$
+Since every point of $\mathcal{S}^n$ is in the domain of one of these $2n+2$ charts, so
+it is locally a topological n-manifold.
+\end{example}
+\begin{example}
+The n-dimensional real projective space $\mathbb{P}^n$ is defined as the set of linear 
+subspace of $\R^{n+1}$. We give it the quotient topology determined by the natural map
+$\pi:\R^{n+1}\backslash\{0\}\rightarrow\mathbb{P}^n$ sending each point $x$ to the line through
+$x$ and 0. For any point $x$, let $[x]=\pi(x)$ denote the equivalence class of x in 
+$\mathbb{P}^n$. For each i, let $\tilde{U}_i\subset\R^{n+1}\backslash\{0\}$ be the set 
+where $x^i\neq 0$, andlet $U_i=\pi(\tilde{U}_i)\subset \mathbb{P}^n$. Define a map 
+$\varphi:U_i\rightarrow\R^n$by $$ \varphi_i[x^1,\dots,x^{n+1}]=\left(\frac{x^1}{x^i},
+\dots,\frac{x^{i-1}}{x^i},\frac{x^{i+1}}{x^i},\dots,\frac{x^{n+1}}{x^i},\right)$$
+This map is well-defined because its value is unchanged by multiplying $x$ by a nonzero
+constant, and it is continuous because $\varphi\circ\pi$ is continuous.
+\end{example}
+
 \section{Smooth Structure}
+However, in the entire theory of topological manifolds, there is no mention of calculus.
+There is a good reason for this: Whatever sense we might try to make derivatives of
+functions or curves on a manifold, the cannot be invariant under homoemorphisms.
+To make sense of derivatives of functions, curves, or maps, we will need to introduce a
+new kind of manifold called a "smooth manifold"("smooth" means $C^\infty$ and property
+of "smoothness" is invariant under homeomorphisms).
+
+For example, a function $f:M\rightarrow\R$ is smooth iff the composite function 
+$f\circ\varphi^{-1}:\tilde{U}\rightarrow\R$ is smooth. But this will make sense only if
+this property is independent of the choice of coordinate chart. To guarantee this, we
+will restrict our attention to "smooth charts".
+
+If $(U,\varphi),(V,\phi)$ are two charts such that $U\cap V\neq \emptyset$, then the 
+composite map $\phi\circ\varphi^{-1}:\varphi(U\cap V)\rightarrow\phi(U\cap V)$ is a 
+composition of homeomorphisms. Two charts are said to be \emph{smoothly compatible} if
+either $U\cap V = \emptyset$ or the transition map $\phi\circ\varphi^{-1}$ is a diffeomorphism.
+
+We define an \emph{atlas} for M to be a collection of charts whose domains cover M.
+An atlas $\mathcal{A}$ is called a \emph{smooth atlas} if any two charts in $\mathcal{A}$
+are smoothly compatible with each other.
+
+Our plan is to define a "smooth structure" on M by giving a smooth atlas, and to define a 
+function to be smooth in the atlas. There is one minor technical problem with this approach:
+In general, there will be many possible choices of atlas that give the "smae" smooth 
+structure, in that they all determine the same collection of smooth functions on M.
+\emph{maximal atlas} would be a solution to this. A smooth atlas $\mathcal{A}$ on M is 
+maximal if it is not contained in any strictly larger smooth atlas.
+
+Now, we can define that a \emph{smooth structure} on a topological n-manifold M is a maximal
+smooth atlas. A \emph{smooth manifold} is a pair $(M,\mathcal{A})$. We emphasize that a
+smooth structure is an additional piece of data that must be added to a topological manifold
+before we are entitled to talk about a "smooth manifold." In fact, a given topological manifold
+may have many different smooth sturctures or it contains no smooth structures at all.
+
+It is generally not very convenient to define a smooth structure by explicitly describing a
+maximal smooth atlas, because such an atlas contains very many charts. Fortunately, we need
+only specify some smooth atlas, as the next lemma shows.
+\begin{lem}\label{lem:smooth_atlas}
+Let M be a topological manifold
+\begin{enumerate}
+\item[(a)] Every smooth atlas for M is contained in a unique maximal smooth atlas.
+\item[(b)] Two smooth atlases for M determine the same maximal smooth atlas iff their union is
+a smooth atlas.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+Let $\mathcal{A}$ be a smooth atlas for M, and let $\overline{\mathcal{A}}$ denote the 
+set of all charts that are smoothly compatible with every chart in $\mathcal{A}$. To 
+show that $\overline{\mathcal{A}}$ is a smooth atlas, we need to show that any two
+charts of $\overline{\mathcal{A}}$ are compatible with each other, which is to say that
+for any $(U,\varphi),(V,\phi)\in \overline{\mathcal{A}}, \phi\circ\varphi^{-1}$ is
+smooth. Let $x=\varphi(p)\in \varphi(U\cap V)$ be arbitrary. Because the domains of the
+charts in $\mathcal{A}$ cover M, the is some chart $(W,\theta)\in \mathcal{A}$ s.t. 
+$p\in W$. Since every chart in $\overline{\mathcal{A}}$ is smoothly compatible with 
+$(W,\theta)$, both the map $\theta\circ\varphi^{-1}$ and $\phi\circ\theta^{-1}$ are 
+smooth where they defined. Since $p\in U\cap V \cap W$, it follows that $\phi\circ\varphi^{-1}
+=(\phi\circ\theta^{-1})\circ\theta\circ\varphi^{-1}$ is smooth on a neighborhood of $x$.
+Thus $\phi\circ\varphi^{-1}$ is smooth in a neighborhood of each point in $\varphi(U\cap V)$.
+Therefore $\overline{\mathcal{A}}$ is a smooth atlas. To check that it is maximal, just
+note that any chart that is smoothly compatible with every chart in $\overline{\mathcal{A}}$
+must in particular be smoothly compatible with every chart in $\mathcal{A}$, so it is already
+int $\overline{\mathcal{A}}$. This proves the existence of a maixmal smooth atlas containing
+$\mathcal{A}$. If $\mathcal{B}$ is any other maximal smooth atlas containing $\mathcal{A}$,
+each of its charts is smoothly compatible with each chart in $\mathcal{A}$, so $\mathcal{B}\subset
+\overline{\mathcal{A}}$. By maximality, $\mathcal{B}=\overline{\mathcal{A}}$.
+\end{proof}
+\begin{exer}
+Prove Lemma \ref{lem:smooth_atlas}(b).
+\end{exer}
 \section{Examples}
 \section{Local Coordinate Representation}
 \section{Manifolds with Boundary}
