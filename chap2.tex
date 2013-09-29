@@ -1,5 +1,98 @@
 \chapter{Maps}
+The main reason for introducing smooth structures was to enable us to define
+smooth functions on manifolds and smooth maps between manifolds. We generally
+reserve the term "function" for a map whose range is $\R$ or $\R^n$. The word
+"map" or "mapping" can mean any type of map betwen arbitrary manifolds. 
+
+We then study diffeomorphisms, which are bijective smooth maps with smooth inverses.
+The main objects of study in smooth manifold theory are properties that are 
+invariant under diffeomorphisms. Later in the chapter, we study covering maps, and
+their relationship to the continuous covering maps in topology; and we introduce
+Lie groups, which are smooth manifold that are also groups in which multiplication
+and inversion are smooth maps. At the end, we introduce some powerful tools for
+smoothly piecing together local smooth objects, called bump functions and partitions
+of unity. They will be used for building global smooth objects out of ones that 
+are initially defined only locally.
+
 \section{Smooth functions and maps}
+\begin{definition}
+If $M$ is a smooth manifold, a function $f:M\rightarrow\Re^k$ is said to be smooth if,
+for every smooth char $(U,\varphi)$ on $M$, the composite function $f\circ\varphi^{-1}$
+is smooth on the open subset $\varphi(U)\subset \R^n$. 
+\end{definition}
+Although by definition smoothness of $f$ means that its composition with \emph{every}
+smoooth coordinate map is smooth, in pratice it suffices to check smoothness in each
+of the charts of some smooth atlas, as the next lemma shows.
+\begin{lem}
+Suppose $\{(U_\alpha,\varphi_\alpha)\}$ is a smooth atlas for $M$. If $f:M\rightarrow\R^k$
+is a function s.t. $f\circ\varphi_{\alpha}^{-1}$ is smooth for each $\alpha$, then $f$ is
+smooth.
+\end{lem}
+\begin{proof}
+We just need to check that $f\circ\varphi^{-1}$ is smooth for any smooth chart $(U,\varphi)$
+on $M$. It suffices to show it is smooth in a neighborhood of each point $x=\varphi(p)\in 
+\varphi(U)$. For any $p\in U$, there is a chart $(U_\alpha,\varphi_\alpha)$ in the atlas whose
+domain contains $p$. Since $(U,\varphi)$ is smoothly compatible with $(U_\alpha,\varphi_\alpha)$,
+the transition map $\varphi_\alpha\circ\varphi^{-1}$ is smooth on its domain of definition, 
+which includes $x$. Thus $f\circ\varphi^{-1}=(f\circ\varphi_{\alpha}^{-1})\circ(\varphi_\alpha
+\circ\varphi^{-1})$ is smooth in a neighborhood of $x$.
+\end{proof}
+Given a function $f$ and a chart $(U,\varphi)$, the function $\hat{f}:\varphi(U)\rightarrow\R^k$
+defined by $\hat{f}(x)=f\circ\varphi^{-1}(x)$ is called the \emph{coordinate representation} of $f$.
+\begin{definition}
+Let $M,N$ be smooth manifolds, a map $F:M\rightarrow N$ is smooth if, for any smooth charts
+$(U,\varphi)$ for $M$ and $(V,\phi)$ for $N$, the composite map $\phi\circ F\circ\varphi^{-1}$
+is smooth from $\varphi(U\cap F^{-1}(V))$ to $\phi(V)$.
+\end{definition}
+\begin{exer}
+Let $F:M\rightarrow N$ be a map between smooth manifolds, and suppose each point $p\in M$ has a 
+neighborhood $U$ s.t. $F\mid_U$ is smooth. Show that $F$ is smooth.
+\end{exer}
+Similarly, we call $\hat{F}=\phi\circ F\circ\varphi^{-1}$ the coordinate representation of $F$.
+\begin{lem}\label{lem:22}
+Let $F:M\rightarrow N$ be the map of two smooth manifolds. If $\{(U_\alpha,\varphi_\alpha)\}$ and
+$\{(V_\beta,\phi_\beta)\}$ are smooth atlases, and if for each $\alpha,\beta$, $\phi_\beta\circ
+F\circ\varphi_{\alpha}^{-1}$ is smooth on its domain of definition, then $F$ is smooth.
+\end{lem}
+\begin{exer}
+Prove Lemma \ref{lem:22}.
+\end{exer}
+\begin{lem}
+Any composition of smooth maps between manifolds is smooth.
+\end{lem}
+\begin{proof}
+Given smooth maps $F:M\rightarrow N$ and $G:N\rightarrow P$, let $(U,\varphi)$ and $(V,\phi)$ be
+any charts for $M,N$. We need to show that $\phi\circ(G\circ F)\circ\varphi^{-1}$ is smooth where
+it is defined, namely on $\varphi(U\cap (G\circ F)^{-1}(V))$. For any point $p\in U\cap (G\circ F)
+^{-1}(V)$, there is a chart $(W,\theta)$ for $N$ s.t. $F(p)\in W$. Smoothness of $F$ and $G$ means
+that $\theta\circ F\circ\varphi^{-1}$ and $\phi\circ G\circ\theta^{-1}$ are smooth where they are
+defined, and therefore $\phi\circ(G\circ F)\circ\varphi^{-1}=(\phi\circ G\circ\theta^{-1})\circ(
+\theta\circ F\circ\varphi^{-1})$ is smooth.
+\end{proof}
+\begin{exer}
+Show that a map $F:N\rightarrow M_1\times\dots \times M_k$ is smooth iff each of the "component maps"
+$F_i=\pi_i\circ F:N\rightarrow M_i$ is smooth. (Here $\pi_i:M_1\times\dots \times M_k\rightarrow M_i$
+is the projection onto the i-th factor.)
+\end{exer}
+\begin{definition}
+A diffeomorphism between two manifolds is a smooth map $F:M\rightarrow N$ that has a smooth inverse.
+This is symbolized by $M\approx N$. 
+\end{definition}
+More generally, $F$ is called a local diffeomorphism if every point $p\in U$ s.t. $F(U)$ is an open
+set in $N$ and $F:U\rightarrow F(U)$ is a diffeomorphism.
+\begin{exer}
+Show that a map is a diffeomorphism iff it is a bijective local diffeomorphism.
+\end{exer}
+Two smooth manifolds are essentially indistinguishable if they are diffeomorphic. One question that
+naturally arises is to what extent a smooth structure on a given topological manifold might be unique.
+There are really two different question here: The first is whether a given manifold M admits distinct
+smooth structures, and the second is whether it admits smooth structures that are not diffeomorphic to
+each other. In general, a given topological manifold will admit very many distinct smooth structure.
+For the second question, it  follows from the work of Edwin Moise and James Munkres that every topological
+manifold of dimension k ($k\leqslant 3$) has a smooth structure that is unique up to diffeomorphism.
+The analogous question in higher dimensions turns out to be quite deep and is still largely unanswered.
+The problem of identifying the number of smooth structures (if any) on topological 4-manifolds is an
+active subject of current research.
 \section{Smooth covering maps}
 \section{Lie Group}
 \section{Bump Function and Partition of Unity}
