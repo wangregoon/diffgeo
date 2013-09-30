@@ -94,6 +94,35 @@ The analogous question in higher dimensions turns out to be quite deep and is st
 The problem of identifying the number of smooth structures (if any) on topological 4-manifolds is an
 active subject of current research.
 \section{Smooth covering maps}
+\begin{definition}
+Covering map between topological spaces: This is a surjective continuous map $\pi:\tilde{M}\rightarrow M$
+between connected, locally path connected spaces, with the property that every point $p\in M$ has a 
+neighborhood $U$ that is evenly covered, meaning that each component of $\pi^{-1}(U)$ is mapped 
+homeoporhically onto $U$ by $\pi$.
+\end{definition}
+\begin{definition}
+Smooth covering map $\pi:\tilde{M}\rightarrow M$ is a smooth surjective map with the property that every
+$p\in M$ has a neighborhood $U$ that each component of $\pi^{-1}(U)$ is mapped diffeomorphically onto 
+$U$ by $\pi$.
+\end{definition}
+\begin{prop}\label{prop:21}
+\begin{enumerate}
+\item[(a)] Any smooth covering map is a local diffeomorphism and an open map.
+\item[(b)] An injective smooth covering map is a diffeomorphism.
+\item[(c)] A topological covering map is a smooth covering map iff is a local diffeomorphism.
+\end{enumerate}
+\end{prop}
+\begin{exer}
+Prove Proposition \ref{prop:21}.
+\end{exer}
+If $\pi:\tilde{M}\rightarrow M$ is any continuous map, a section of $\pi$ is a continous map $\sigma:M
+\rightarrow\tilde{M}$ s.t. $\pi\circ\sigma=\mathrm{Id}_M$. A local section is a continuous map $\sigma:
+U\subset M\rightarrow\tilde{M}$ and satisfying the analogous relation $\pi\circ\sigma=\mathrm{Id}_U$.
+\begin{lem}
+Suppose $\pi:\tilde{M}\rightarrow M$ is a smooth covering map. Every point of $\tilde{M}$ is the image
+of a smooth local section of $\pi$. More precisely, for any $q\in \tilde{M}$, there is a neighborhood 
+$U$ of $p=\pi(q)$ and a smooth local section $\sigma:M\rightarrow\tilde{M}$ s.t. $\sigma(p)=q$.
+\end{lem}
 \section{Lie Group}
 \section{Bump Function and Partition of Unity}
 \section{Problems}
